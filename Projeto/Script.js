@@ -30,26 +30,19 @@ form.addEventListener("Submit", (event) => {
 
 //funcão para subir a página
 
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+const button = document.createElement("button")
   
-  const button = document.createElement("button")
-  
-  button.setAttribute("type","button")
-  button.setAttribute("onclick", "scrollToTop()")
-  button.className = "btn btn-danger position-fixed bottom-0 end-0 m-5"
-  button.id = "top-button"
-  button.appendChild(document.createTextNode("Ir para o topo"))
-  
-  window.onscroll = () => {
-    if (window.scrollY > 400) {
+button.className = "btn btn-danger position-fixed bottom-0 end-0 m-5"
+button.appendChild(document.createTextNode("Ir para o topo"))
+
+button.addEventListener("click", backToTop = () => {
+    window.scrollTo(0,0)
+});
+
+window.onscroll = () => {
+    if (window.scrollY > 300) {
         document.body.appendChild(button)
-
-        return
-    }
-
-    if (document.getElementById("top-button")) {
+    } else {
         document.body.removeChild(button)
     }
 }
